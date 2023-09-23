@@ -25,6 +25,21 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        sub_menu: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'lag',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'lag',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -46,6 +61,15 @@ function Header() {
             setResult([]);
         }, 0);
     }, []);
+
+    const handlMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'lag':
+                ///
+                break;
+            default:
+        }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -85,7 +109,7 @@ function Header() {
                     <Button text>Upload</Button>
                     <Button primary>Login</Button>
 
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handlMenuChange}>
                         <button className={cx('more-button')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
